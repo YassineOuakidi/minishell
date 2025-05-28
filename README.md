@@ -8,20 +8,32 @@ The primary objective is to build your own functional shell that handles basic c
 
 ## 📁 Project Structure
 ```
-minishell/
-├── main.c     # Main shell loop and command handling
-├── src/                     # Implementation files for various shell functionalities
-│   ├── builtins.c           # Implementations for cd, echo, pwd, export, unset, env, exit
-│   ├── command_execution.c  # Logic for searching and launching executables
-│   ├── parsing.c            # Command line parsing (quotes, redirections, pipes)
-│   ├── signal_handling.c    # Control+C, Control+D, Control+\\ handling
-│   ├── term_utils.c         # termios and termcap related utilities for line editing
-│   └── (other utility files as needed)
-├── inc/                     # Header files
-│   ├── minishell.h          # Main project headers
-│   ├── (other utility headers)
-├── Makefile                 # Build automation
-└── .gitignore               # Files/directories to ignore in Git
+./minishell
+├──── inc
+│   └──── shell.h
+├──── builtin.c
+├──── echo.c
+├──── env.c
+├──── exec_pipes.c
+├──── export.c
+├──── external.c
+├──── multi.c
+├──── redirections.c
+├──── shell.c
+├──── unset.c
+└──── utils
+    ├──── env_utils.c
+    ├──── free.c
+    ├──── ft_memcpy.c
+    ├──── ft_prompt_utils.c
+    ├──── ft_remove_endl.c
+    ├──── ft_split.c
+    ├──── ft_strcmp.c
+    ├──── ft_strjoin.c
+    ├──── get_next_line.c
+    ├──── get_next_line.h
+    └──── get_next_line_utils.c
+
 ```
 
 ## 🔧 Build Instructions
@@ -29,7 +41,7 @@ minishell/
 To build the project:
 
 ```bash
-make
+gcc *.c utils/*.c -o minishell
 ```
 This compiles the program and generates an executable named `minishell` (as per the subject requirements).
 
@@ -44,7 +56,6 @@ After building, run the shell with:
 ## 🧩 Dependencies
 
 - `gcc`
-- `make`
 - `ncurses` library (or `libtinfo` which provides termcap functions)
 
 On Debian/Ubuntu, install with:
@@ -94,11 +105,3 @@ Your `Makefile` must at least contain the following rules:
 - All code must adhere to the project's Norm.
 - Functions should not quit unexpectedly (segmentation fault, bus error, double free, etc.).
 - All heap-allocated memory space must be properly freed; no leaks will be tolerated.
-
-## 🧹 Clean
-
-To clean the build artifacts:
-
-```bash
-make clean
-```
