@@ -1,7 +1,4 @@
-from pathlib import Path
-
-# Content of the Minishell README
-minishell_readme = """# Minishell
+# Minishell
 
 **Minishell** is a C-based terminal control library that aims to recreate a simple shell, similar to a basic version of bash or zsh. This project focuses on understanding processes, file descriptors, and terminal manipulation, offering a glimpse into how shells operated before modern GUIs.
 
